@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador de Processo Fake</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 350px;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    button {
+      background: #0078d7;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 20px;
+      margin: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #005a9e;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .hidden { display: none; }
+    .success {
+      color: #28a745;
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Simulador de Processo</h1>
+    <button id="btnProcesso">Processo</button>
+
+    <div id="opcoes" class="hidden">
+      <button id="btnFisico">Processo Físico</button>
+      <button id="btnEletronico">Processo Eletrônico</button>
+    </div>
+
+    <div id="etapaEmail" class="hidden">
+      <p>Digite o e-mail ou telefone do destinatário:</p>
+      <input type="text" id="destinatario">
+      <button id="btnContinuar1">Continuar</button>
+    </div>
+
+    <div id="etapaTaxa" class="hidden">
+      <p>Digite uma taxa adicional em BRL:</p>
+      <input type="number" id="taxa">
+      <button id="btnFinalizar">Finalizar</button>
+    </div>
+
+    <div id="resultado" class="hidden success">
+      ✅ Processo Efetuado
+    </div>
+  </div>
+
+  <script>
+    const btnProcesso = document.getElementById("btnProcesso");
+    const opcoes = document.getElementById("opcoes");
+    const btnFisico = document.getElementById("btnFisico");
+    const btnEletronico = document.getElementById("btnEletronico");
+    const etapaEmail = document.getElementById("etapaEmail");
+    const etapaTaxa = document.getElementById("etapaTaxa");
+    const btnContinuar1 = document.getElementById("btnContinuar1");
+    const btnFinalizar = document.getElementById("btnFinalizar");
+    const resultado = document.getElementById("resultado");
+
+    btnProcesso.onclick = () => {
+      opcoes.classList.remove("hidden");
+    };
+
+    btnFisico.onclick = btnEletronico.onclick = () => {
+      etapaEmail.classList.remove("hidden");
+    };
+
+    btnContinuar1.onclick = () => {
+      etapaTaxa.classList.remove("hidden");
+    };
+
+    btnFinalizar.onclick = () => {
+      resultado.classList.remove("hidden");
+    };
+  </script>
+</body>
+</html>
